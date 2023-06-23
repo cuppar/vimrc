@@ -69,3 +69,6 @@ map ,x :!$VIMRUNTIME/bashscripts/buildcmake.sh .<Enter>
 " cpp format
 autocmd BufNewFile,BufRead *.cpp set formatprg=astyle\ -A1p
 map ,f magggqG`a
+
+" push updated .vimrc file to github
+map ,u :!$VIMRUNTIME/bashscripts/pushvimrc2hub.sh<Enter>
