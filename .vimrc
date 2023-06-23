@@ -53,7 +53,7 @@ endif
 
 " my settings
 set laststatus=2
-set mouse=a
+set textwidth=78
 
 set splitbelow
 set splitright
@@ -65,3 +65,7 @@ set listchars=tab:>-,trail:-
 
 " build cmake project
 map ,x :!$VIMRUNTIME/bashscripts/buildcmake.sh .<Enter>
+
+" cpp format
+autocmd BufNewFile,BufRead *.cpp set formatprg=astyle\ -A1p
+map ,f magggqG`a
