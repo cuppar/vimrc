@@ -67,7 +67,7 @@ set listchars=tab:>-,trail:-
 map ,x :!$VIMRUNTIME/bashscripts/buildcmake.sh .<Enter>
 
 " cpp format
-autocmd BufNewFile,BufRead *.cpp set formatprg=astyle\ -A1p
+autocmd BufNewFile,BufRead *.(c|cpp|h|hpp) set formatprg=astyle\ -A1p
 map ,f magggqG`a
 
 " push updated .vimrc file to github
