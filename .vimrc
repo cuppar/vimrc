@@ -75,3 +75,6 @@ map ,u :!$VIMRUNTIME/bashscripts/pushvimrc2hub.sh<Enter>
 
 " edit .vimrc
 map ,v :sp $MYVIMRC<Enter>
+
+" plugins
+packadd YouCompleteMe
