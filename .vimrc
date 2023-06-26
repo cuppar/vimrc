@@ -58,6 +58,9 @@ set textwidth=78
 set splitbelow
 set splitright
 
+" line number
+set rnu
+
 map <Tab> :nohl<Enter>
 
 set list
@@ -66,8 +69,14 @@ set listchars=tab:>-,trail:-
 " build cmake project
 map ,x :!$VIMRUNTIME/bashscripts/buildcmake.sh .<Enter>
 
+" format
 " cpp format
-autocmd BufNewFile,BufRead *.c,*.cpp,*.h,*.hpp set formatprg=astyle\ -A1p
+autocmd BufNewFile,BufRead *.c,*.cpp,*.h,*.hpp set formatprg=astyle\ -A1pF\ --unpad-brackets\ -xe\ --squeeze-ws\ -k1\ -W1\ -xb\ --squeeze-lines=1\ -xC80\ -xV\ -Y\ -H\ -U\ -xj\ -xfxh
+
+" cmake format
+autocmd BufNewFile,BufRead CMakeLists.txt set formatprg=cat\ >f\ &&\ cmake-format\ f\ &&\ rm\ f
+
+" format shortcut
 map ,f magggqG`a
 
 " push updated .vimrc file to github
@@ -76,5 +85,18 @@ map ,u :!$VIMRUNTIME/bashscripts/pushvimrc2hub.sh<Enter>
 " edit .vimrc
 map ,v :sp $MYVIMRC<Enter>
 
-" plugins
+" vim-plug plugins
+" install vim-plug
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" vim-plug plug list
+call plug#begin()
+call plug#end()
+
+
+" other plugins
 packadd YouCompleteMe
