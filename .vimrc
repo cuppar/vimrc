@@ -71,7 +71,7 @@ map ,x :!$VIMRUNTIME/bashscripts/buildcmake.sh .<Enter>
 
 " format
 " cpp format
-autocmd BufNewFile,BufRead *.c,*.cpp,*.h,*.hpp set formatprg=astyle\ -A1pF\ --unpad-brackets\ -xe\ --squeeze-ws\ -k1\ -W1\ -xb\ --squeeze-lines=1\ -xC80\ -xV\ -Y\ -H\ -U\ -xj\ -xfxh
+autocmd BufNewFile,BufRead *.c,*.cpp,*.h,*.hpp set formatprg=astyle\ -A1pF\ --unpad-brackets\ -xe\ --squeeze-ws\ -k1\ -W1\ -xb\ --squeeze-lines=1\ -xC70\ -xV\ -Y\ -H\ -U\ -xj\ -xfxh
 
 " cmake format
 autocmd BufNewFile,BufRead CMakeLists.txt set formatprg=cat\ >f\ &&\ cmake-format\ f\ &&\ rm\ f
@@ -100,3 +100,8 @@ call plug#end()
 
 " other plugins
 packadd YouCompleteMe
+
+
+" ########### temp config ###########
+" auto push code to github
+map ,p :!~/project/dsa_in_cpp/scripts/autopush.sh<Enter>
