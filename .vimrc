@@ -58,6 +58,7 @@ set textwidth=78
 set splitbelow
 set splitright
 
+set wildignorecase
 " line number
 set rnu
 
@@ -74,7 +75,7 @@ map ,x :!$VIMRUNTIME/bashscripts/buildcmake.sh .<Enter>
 autocmd BufNewFile,BufRead *.c,*.cpp,*.h,*.hpp set formatprg=astyle\ -A1pF\ --unpad-brackets\ -xe\ --squeeze-ws\ -k1\ -W1\ -xb\ --squeeze-lines=1\ -xC70\ -xV\ -Y\ -H\ -U\ -xj\ -xfxh
 
 " cmake format
-autocmd BufNewFile,BufRead CMakeLists.txt set formatprg=cat\ >f\ &&\ cmake-format\ f\ &&\ rm\ f
+autocmd BufNewFile,BufRead CMakeLists.txt set formatprg=cat\ >.tempFile\ &&\ cmake-format\ .tempFile\ &&\ rm\ .tempFile
 
 " format shortcut
 map ,f magggqG`a
@@ -86,7 +87,7 @@ map ,u :!$VIMRUNTIME/bashscripts/pushvimrc2hub.sh<Enter>
 map ,v :sp $MYVIMRC<Enter>
 
 " vim-plug plugins
-" install vim-plug
+" auto install vim-plug
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -95,12 +96,14 @@ endif
 
 " vim-plug plug list
 call plug#begin()
+Plug 'jiangmiao/auto-pairs'
+Plug 'ycm-core/YouCompleteMe'
 call plug#end()
 
 
-" other plugins
-packadd YouCompleteMe
-
+" ycm config
+let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
+let g:ycm_confirm_extra_conf = 0
 
 " ########### temp config ###########
 " auto push code to github
