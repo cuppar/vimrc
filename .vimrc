@@ -90,10 +90,11 @@ map ,v :sp $MYVIMRC<Enter>
 
 " comment and uncomment
 map ,c ma0i//<Space><Esc>`alll
-map ,d ma0xxx`ahhh
+map ,cd ma0xxx`ahhh
 
 " ycm maps
-map ,gd :YcmCompleter GoToDefinition<Enter>
+map ,d :YcmCompleter GoToDefinition<Enter>
+map ,r :YcmCompleter RefactorRename 
 
 " ### vim-plug plugins
 " auto install vim-plug
