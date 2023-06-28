@@ -92,6 +92,9 @@ map ,v :sp $MYVIMRC<Enter>
 map ,c ma0i//<Space><Esc>`alll
 map ,d ma0xxx`ahhh
 
+" ycm maps
+map ,gd :YcmCompleter GoToDefinition<Enter>
+
 " ### vim-plug plugins
 " auto install vim-plug
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
