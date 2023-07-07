@@ -89,12 +89,13 @@ map ,u :!$VIMRUNTIME/bashscripts/pushvimrc2hub.sh<Enter>
 map ,v :sp $MYVIMRC<Enter>
 
 " comment and uncomment
-map ,c ma0i//<Space><Esc>`alll
-map ,cd ma0xxx`ahhh
+map ,cc ma0i//<Space><Esc>`alll
+map ,cd ma0:s+// ++<Enter>`ahhh<Tab>
 
 " ycm maps
 map ,d :YcmCompleter GoToDefinition<Enter>
 map ,r :YcmCompleter RefactorRename 
+map ,i :YcmCompleter FixIt<Enter>
 
 " ### vim-plug plugins
 " auto install vim-plug
